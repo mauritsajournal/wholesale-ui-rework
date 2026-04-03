@@ -1,0 +1,249 @@
+/*
+Theme Name: Kalium - Child Theme
+Theme URI: https://kaliumtheme.com
+Author: Laborator
+Author URI: https://laborator.co
+Description: A-Journal Wholesale — Retouch v5
+Requires PHP: 7.2
+Version: 1.5
+Template: kalium
+Text Domain: kalium
+*/
+
+/* ==============================================
+   A-JOURNAL WHOLESALE — RETOUCH v5
+   Backups: .backup (orig), .v3, .v4 (prev)
+   
+   v5: narrower sidebar, 5-column grid, tighter gap
+   ============================================== */
+
+
+/* --- 1. HEADER (same as v4) --- */
+
+.header-logo {
+  --k-logo-height: 90px !important;
+  --k-logo-width: 90px !important;
+}
+.header-block__row--main {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+.site-header.main-header.sticky--active .header-logo {
+  --k-logo-height: 40px !important;
+  --k-logo-width: 40px !important;
+}
+.site-header.main-header.sticky--active .header-block__row--main {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+.header-logo { transition: all 0.3s ease; }
+.header-block__row--main { transition: padding 0.3s ease; }
+.site-header.main-header.sticky--active {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+
+/* --- 2. LAYOUT: Narrow sidebar + wider grid --- */
+
+@media (min-width: 993px) {
+  /* Shrink the sidebar significantly */
+  .content-wrapper.has-sidebar .sidebar {
+    flex: 0 0 170px !important;
+    max-width: 170px !important;
+    min-width: 170px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Product area takes the rest */
+  .content-wrapper.has-sidebar .shop,
+  .content-wrapper.has-sidebar .products-wrapper {
+    flex: 1 1 0 !important;
+    max-width: calc(100% - 186px) !important;
+  }
+
+  /* Force 5 columns in the product grid */
+  .woocommerce ul.products.columns-xl-4,
+  .woocommerce ul.products.columns-md-4,
+  .woocommerce ul.products {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  /* Override Kalium column width on product items */
+  .woocommerce ul.products li.product {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 769px) and (max-width: 992px) {
+  .woocommerce ul.products {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important;
+  }
+  .woocommerce ul.products li.product {
+    width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 768px) {
+  .woocommerce ul.products {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .woocommerce ul.products li.product {
+    width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+}
+
+/* Off-canvas drawer: narrow */
+.shop-sidebar.off-canvas .sidebar {
+  max-width: 250px !important;
+}
+
+
+/* --- 3. PRODUCT CARDS --- */
+
+.woocommerce ul.products li.product {
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.woocommerce ul.products li.product:hover {
+  border-color: #d4d4d4;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+}
+
+/* Top padding so hover zoom doesnt clip */
+.woocommerce ul.products li.product .image-placeholder,
+.woocommerce ul.products li.product .loop-product-image,
+.woocommerce ul.products li.product .lb-element-woocommerce-product-images {
+  padding-top: 6px;
+}
+
+/* Image zoom */
+.woocommerce ul.products li.product img {
+  transition: transform 0.5s ease;
+}
+.woocommerce ul.products li.product:hover img {
+  transform: scale(1.03);
+}
+
+/* Titles: clear and readable even at 5 cols */
+body .lb-element-woocommerce-product-title a {
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  color: #1a1a1a !important;
+}
+body .lb-element-woocommerce-product-title a:hover {
+  color: #247c74 !important;
+}
+
+/* Price */
+.woocommerce ul.products li.product .price,
+body .lb-element-woocommerce-product-price .price {
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  color: #1a1a1a !important;
+}
+
+/* Card info padding: tighter for 5 cols */
+.woocommerce ul.products li.product .lb-element-woocommerce-product-column {
+  padding: 8px 10px 10px !important;
+}
+
+
+/* --- 4. BUTTONS (same as v4) --- */
+
+body .woocommerce a.button,
+body .woocommerce button.button,
+body .woocommerce input.button,
+body .woocommerce a.button.alt,
+body .woocommerce button.button.alt,
+body .woocommerce input.button.alt,
+body .woocommerce #respond input#submit,
+body .btn.btn-primary {
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  letter-spacing: 0 !important;
+  transition: all 0.2s ease !important;
+}
+body .woocommerce a.button:hover,
+body .woocommerce button.button:hover,
+body .woocommerce a.button.alt:hover,
+body .woocommerce button.button.alt:hover,
+body .btn.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(36, 124, 116, 0.2);
+}
+
+body .button.add-to-cart.link-button,
+body .woocommerce a.button.product_type_simple {
+  border-radius: 6px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  padding: 6px 12px !important;
+  text-transform: none !important;
+  transition: all 0.2s ease !important;
+}
+
+
+/* --- 5. FILTER SIDEBAR STYLING --- */
+
+.prdctfltr_wc .prdctfltr_filter_title,
+.prdctfltr_wc .prdctfltr_filter > .prdctfltr_head {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: #666 !important;
+  padding-bottom: 6px !important;
+}
+
+.prdctfltr_wc .prdctfltr_filter .prdctfltr_regular_title {
+  font-size: 12.5px;
+  padding: 2px 0;
+}
+
+.filters-toggle {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+
+/* --- 6. SMALL TOUCHES --- */
+
+body p { color: #444; }
+
+body input[type="text"],
+body input[type="email"],
+body input[type="password"],
+body input[type="number"],
+body input[type="search"],
+body select,
+body textarea {
+  border-radius: 6px;
+}
+
+.woocommerce-message,
+.woocommerce-info {
+  border-top: none !important;
+  border-left: 3px solid #247c74 !important;
+  border-radius: 6px !important;
+}
