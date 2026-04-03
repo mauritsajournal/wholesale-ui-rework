@@ -1,0 +1,210 @@
+/*
+Theme Name: Kalium - Child Theme
+Theme URI: https://kaliumtheme.com
+Author: Laborator
+Author URI: https://laborator.co
+Description: A-Journal Wholesale — Retouch v3
+Requires PHP: 7.2
+Version: 1.3
+Template: kalium
+Text Domain: kalium
+*/
+
+/* ==============================================
+   A-JOURNAL WHOLESALE — GENTLE RETOUCH
+   Backups: style.css.backup (original)
+   
+   Changes: header sizing, card polish, buttons,
+   sidebar refinement. Logo stays intact.
+   ============================================== */
+
+
+/* --- 1. HEADER: Reduce height, keep logo --- 
+   
+   The logo is a 512x512 square rendered at 150x150 
+   by Kalium CSS vars. We reduce it to 70px default
+   and 36px on sticky. We use Kalium s own variable
+   system so the sticky JS animation still works.
+*/
+
+/* Default header: logo smaller, tighter row */
+.header-logo {
+  --k-logo-height: 70px !important;
+  --k-logo-width: 70px !important;
+}
+.header-block__row--main {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+/* Sticky header: compact but logo still visible */
+.site-header.main-header.sticky--active .header-logo {
+  --k-logo-height: 36px !important;
+  --k-logo-width: 36px !important;
+}
+.site-header.main-header.sticky--active .header-block__row--main {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Smooth size transition */
+.header-logo {
+  transition: all 0.3s ease;
+}
+.header-block__row--main {
+  transition: padding 0.3s ease;
+}
+
+/* Subtle shadow when sticky */
+.site-header.main-header.sticky--active {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+
+/* --- 2. PRODUCT CARDS: Light borders, warm hover ---
+   
+   Gentle border to define cards. Hover adds subtle
+   lift and shadow. Titles stay readable.
+*/
+
+.woocommerce ul.products li.product {
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.woocommerce ul.products li.product:hover {
+  border-color: #d4d4d4;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+}
+
+/* Image: gentle zoom on hover */
+.woocommerce ul.products li.product img {
+  transition: transform 0.5s ease;
+}
+.woocommerce ul.products li.product:hover img {
+  transform: scale(1.03);
+}
+
+/* Title: keep readable, slightly refined */
+body .lb-element-woocommerce-product-title a {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  color: #1a1a1a !important;
+}
+body .lb-element-woocommerce-product-title a:hover {
+  color: #247c74 !important;
+}
+
+/* Price: clear hierarchy */
+.woocommerce ul.products li.product .price,
+body .lb-element-woocommerce-product-price .price {
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  color: #1a1a1a !important;
+}
+
+/* A bit more space inside the card info area */
+.woocommerce ul.products li.product .lb-element-woocommerce-product-column {
+  padding: 10px 12px 12px !important;
+}
+
+
+/* --- 3. BUTTONS: Rounded, softer, modern --- */
+
+body .woocommerce a.button,
+body .woocommerce button.button,
+body .woocommerce input.button,
+body .woocommerce a.button.alt,
+body .woocommerce button.button.alt,
+body .woocommerce input.button.alt,
+body .woocommerce #respond input#submit,
+body .btn.btn-primary {
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  letter-spacing: 0 !important;
+  transition: all 0.2s ease !important;
+}
+body .woocommerce a.button:hover,
+body .woocommerce button.button:hover,
+body .woocommerce a.button.alt:hover,
+body .woocommerce button.button.alt:hover,
+body .btn.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(36, 124, 116, 0.2);
+}
+
+/* Add to cart in grid: clean outline pill */
+body .button.add-to-cart.link-button,
+body .woocommerce a.button.product_type_simple {
+  border-radius: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  padding: 7px 16px !important;
+  text-transform: none !important;
+  transition: all 0.2s ease !important;
+}
+
+
+/* --- 4. FILTER SIDEBAR / OFF-CANVAS: Cleaner --- */
+
+/* Filter section titles: smaller, uppercase, muted */
+.prdctfltr_wc .prdctfltr_filter_title,
+.prdctfltr_wc .prdctfltr_filter > .prdctfltr_head {
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: #666 !important;
+  padding-bottom: 8px !important;
+}
+
+/* Filter items: compact */
+.prdctfltr_wc .prdctfltr_filter .prdctfltr_regular_title {
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+/* Off-canvas drawer: tighter max-width on desktop */
+@media (min-width: 993px) {
+  .shop-sidebar.off-canvas .sidebar {
+    max-width: 280px;
+  }
+}
+
+/* Filter toggle button */
+.filters-toggle {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+
+/* --- 5. SMALL TOUCHES --- */
+
+/* Slightly softer body text */
+body p {
+  color: #444;
+}
+
+/* Form inputs: rounded to match buttons */
+body input[type="text"],
+body input[type="email"],
+body input[type="password"],
+body input[type="number"],
+body input[type="search"],
+body select,
+body textarea {
+  border-radius: 6px;
+}
+
+/* WooCommerce notices: left accent instead of top */
+.woocommerce-message,
+.woocommerce-info {
+  border-top: none !important;
+  border-left: 3px solid #247c74 !important;
+  border-radius: 6px !important;
+}

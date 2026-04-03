@@ -1,0 +1,209 @@
+/*
+Theme Name: Kalium - Child Theme
+Theme URI: https://kaliumtheme.com
+Author: Laborator
+Author URI: https://laborator.co
+Description: A-Journal Wholesale — Retouch v4
+Requires PHP: 7.2
+Version: 1.4
+Template: kalium
+Text Domain: kalium
+*/
+
+/* ==============================================
+   A-JOURNAL WHOLESALE — RETOUCH v4
+   Backups: style.css.backup (original), .v3 (prev)
+   
+   v4 fixes: logo bigger, header thinner, titles 
+   bigger, card top padding, sidebar narrower
+   ============================================== */
+
+
+/* --- 1. HEADER --- */
+
+/* Logo: bigger than v3 (was 70, now 90 default) */
+.header-logo {
+  --k-logo-height: 90px !important;
+  --k-logo-width: 90px !important;
+}
+
+/* But the ROW around it: minimal padding */
+.header-block__row--main {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+/* Sticky: logo 40px (was 36), row ultra-thin */
+.site-header.main-header.sticky--active .header-logo {
+  --k-logo-height: 40px !important;
+  --k-logo-width: 40px !important;
+}
+.site-header.main-header.sticky--active .header-block__row--main {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+/* Transitions */
+.header-logo { transition: all 0.3s ease; }
+.header-block__row--main { transition: padding 0.3s ease; }
+
+/* Shadow when sticky */
+.site-header.main-header.sticky--active {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+
+/* --- 2. PRODUCT CARDS --- */
+
+.woocommerce ul.products li.product {
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.woocommerce ul.products li.product:hover {
+  border-color: #d4d4d4;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+}
+
+/* TOP PADDING inside card so hover zoom doesnt clip */
+.woocommerce ul.products li.product .image-placeholder,
+.woocommerce ul.products li.product .loop-product-image,
+.woocommerce ul.products li.product .lb-element-woocommerce-product-images {
+  padding-top: 6px;
+}
+
+/* Image zoom on hover */
+.woocommerce ul.products li.product img {
+  transition: transform 0.5s ease;
+}
+.woocommerce ul.products li.product:hover img {
+  transform: scale(1.03);
+}
+
+/* TITLES: bigger, clear */
+body .lb-element-woocommerce-product-title a {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  color: #1a1a1a !important;
+}
+body .lb-element-woocommerce-product-title a:hover {
+  color: #247c74 !important;
+}
+
+/* Price */
+.woocommerce ul.products li.product .price,
+body .lb-element-woocommerce-product-price .price {
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  color: #1a1a1a !important;
+}
+
+/* Card info padding */
+.woocommerce ul.products li.product .lb-element-woocommerce-product-column {
+  padding: 10px 12px 12px !important;
+}
+
+
+/* --- 3. BUTTONS --- */
+
+body .woocommerce a.button,
+body .woocommerce button.button,
+body .woocommerce input.button,
+body .woocommerce a.button.alt,
+body .woocommerce button.button.alt,
+body .woocommerce input.button.alt,
+body .woocommerce #respond input#submit,
+body .btn.btn-primary {
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  letter-spacing: 0 !important;
+  transition: all 0.2s ease !important;
+}
+body .woocommerce a.button:hover,
+body .woocommerce button.button:hover,
+body .woocommerce a.button.alt:hover,
+body .woocommerce button.button.alt:hover,
+body .btn.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(36, 124, 116, 0.2);
+}
+
+body .button.add-to-cart.link-button,
+body .woocommerce a.button.product_type_simple {
+  border-radius: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  padding: 7px 16px !important;
+  text-transform: none !important;
+  transition: all 0.2s ease !important;
+}
+
+
+/* --- 4. CATEGORY SIDEBAR: narrower --- */
+
+/* When sidebar is visible (larger screens) */
+@media (min-width: 993px) {
+  .content-wrapper.has-sidebar.sidebar-left .sidebar {
+    flex: 0 0 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
+  }
+  /* Give more room to the product grid */
+  .content-wrapper.has-sidebar.sidebar-left .shop {
+    flex: 1 1 0 !important;
+    max-width: calc(100% - 220px) !important;
+  }
+}
+
+/* Off-canvas drawer: narrower */
+.shop-sidebar.off-canvas .sidebar {
+  max-width: 260px !important;
+}
+
+/* Filter titles: compact */
+.prdctfltr_wc .prdctfltr_filter_title,
+.prdctfltr_wc .prdctfltr_filter > .prdctfltr_head {
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: #666 !important;
+  padding-bottom: 8px !important;
+}
+
+.prdctfltr_wc .prdctfltr_filter .prdctfltr_regular_title {
+  font-size: 13px;
+  padding: 2px 0;
+}
+
+.filters-toggle {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+
+/* --- 5. SMALL TOUCHES --- */
+
+body p { color: #444; }
+
+body input[type="text"],
+body input[type="email"],
+body input[type="password"],
+body input[type="number"],
+body input[type="search"],
+body select,
+body textarea {
+  border-radius: 6px;
+}
+
+.woocommerce-message,
+.woocommerce-info {
+  border-top: none !important;
+  border-left: 3px solid #247c74 !important;
+  border-radius: 6px !important;
+}

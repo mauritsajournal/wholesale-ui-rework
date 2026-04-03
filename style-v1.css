@@ -1,0 +1,92 @@
+/*
+Theme Name: Kalium - Child Theme
+Theme URI: https://kaliumtheme.com
+Author: Laborator
+Author URI: https://laborator.co
+Description: A-Journal Wholesale — UI Retouch Step 1
+Requires PHP: 7.2
+Version: 1.1
+Template: kalium
+Text Domain: kalium
+*/
+
+/* ===== STEP 1: Header + Buttons + Product Cards ===== */
+
+/* --- STICKY HEADER: compact on scroll --- */
+.site-header.main-header.sticky--active .header-block__row--main {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  transition: padding 0.3s ease;
+}
+.site-header.main-header.sticky--active .header-logo img,
+.site-header.main-header.sticky--active .main-logo img {
+  max-height: 28px !important;
+  transition: max-height 0.3s ease;
+}
+.site-header.main-header {
+  transition: box-shadow 0.3s ease;
+}
+.site-header.main-header.sticky--active {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* --- BUTTONS: rounded, modern --- */
+body .woocommerce a.button,
+body .woocommerce button.button,
+body .woocommerce input.button,
+body .woocommerce a.button.alt,
+body .woocommerce button.button.alt,
+body .woocommerce input.button.alt,
+body .woocommerce #respond input#submit,
+body .btn.btn-primary {
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  transition: all 0.2s ease !important;
+}
+body .woocommerce a.button:hover,
+body .woocommerce button.button:hover,
+body .woocommerce a.button.alt:hover,
+body .woocommerce button.button.alt:hover,
+body .btn.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(36, 124, 116, 0.25);
+}
+
+/* Grid add-to-cart: outline style */
+body .button.add-to-cart.link-button,
+body .woocommerce a.button.product_type_simple {
+  border-radius: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  padding: 6px 16px !important;
+  text-transform: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* --- PRODUCT CARDS: subtle depth + hover --- */
+.woocommerce ul.products li.product {
+  border-radius: 10px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+.woocommerce ul.products li.product:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* Product image: subtle zoom on hover */
+.woocommerce ul.products li.product img {
+  transition: transform 0.4s ease;
+}
+.woocommerce ul.products li.product:hover img {
+  transform: scale(1.03);
+}
+
+/* Product title: slightly tighter */
+body .lb-element-woocommerce-product-title a {
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  line-height: 1.4;
+}
